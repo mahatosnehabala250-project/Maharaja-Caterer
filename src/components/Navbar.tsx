@@ -9,36 +9,16 @@ const navLinks = [
   { to: '/contact', label: 'Contact Us' },
 ];
 
-// Pages with dark video backgrounds → use light (cream) text
-const darkPages = ['/', '/menus'];
-
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-
-  const isDarkPage = darkPages.includes(location.pathname);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 ${
-        scrolled
-          ? 'glass-nav shadow-lg'
-          : isDarkPage
-          ? 'bg-transparent'
-          : 'bg-maroon/95 backdrop-blur-sm shadow-md'
-      }`}
-    >
+    <nav className="fixed top-0 left-0 right-0 z-[1000] glass-nav shadow-lg transition-all duration-300">
       <div className="section-container flex items-center justify-between h-[70px]">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group">
