@@ -9,10 +9,15 @@ const navLinks = [
   { to: '/contact', label: 'Contact Us' },
 ];
 
+// Pages with dark video backgrounds → use light (cream) text
+const darkPages = ['/', '/menus'];
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  const isDarkPage = darkPages.includes(location.pathname);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -27,13 +32,17 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 ${
-        scrolled ? 'glass-nav shadow-lg' : 'bg-transparent'
+        scrolled
+          ? 'glass-nav shadow-lg'
+          : isDarkPage
+          ? 'bg-transparent'
+          : 'bg-maroon/95 backdrop-blur-sm shadow-md'
       }`}
     >
       <div className="section-container flex items-center justify-between h-[70px]">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="relative w-10 h-10 rounded-full border-2 border-gold overflow-hidden animate-glow group-hover:scale-105 transition-transform">
+          <div className="relative w-10 h-10 rounded-full border-2 border-gold overflow-hidden group-hover:scale-105 transition-transform">
             <img
               src="./images/logo.jpg"
               alt="Maharaja Caterer Logo"
@@ -51,8 +60,10 @@ export default function Navbar() {
             <Link
               key={link.to}
               to={link.to}
-              className={`relative font-poppins text-sm text-cream/90 hover:text-gold transition-colors group ${
-                location.pathname === link.to ? 'text-gold' : ''
+              className={`relative font-poppins text-sm transition-colors group ${
+                location.pathname === link.to
+                  ? 'text-gold font-semibold'
+                  : 'text-cream/90 hover:text-gold'
               }`}
             >
               {link.label}
@@ -72,7 +83,7 @@ export default function Navbar() {
         <div className="hidden lg:block">
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 bg-gold text-maroon font-poppins font-semibold text-sm px-5 py-2.5 rounded-full hover:bg-cream hover:text-maroon transition-all duration-300 animate-glow"
+            className="inline-flex items-center gap-2 bg-gold text-maroon font-poppins font-semibold text-sm px-5 py-2.5 rounded-full hover:bg-cream hover:text-maroon transition-all duration-300"
           >
             <Crown className="w-4 h-4" />
             Check Availability
@@ -109,8 +120,10 @@ export default function Navbar() {
             <Link
               key={link.to}
               to={link.to}
-              className={`font-poppins text-sm text-cream/90 hover:text-gold transition-colors py-2 ${
-                location.pathname === link.to ? 'text-gold' : ''
+              className={`font-poppins text-sm transition-colors py-2 ${
+                location.pathname === link.to
+                  ? 'text-gold font-semibold'
+                  : 'text-cream/90 hover:text-gold'
               }`}
               onClick={() => setIsOpen(false)}
             >
