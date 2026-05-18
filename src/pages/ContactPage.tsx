@@ -2,7 +2,7 @@ import ContactHeader from '../sections/contact/ContactHeader';
 import WarningBanner from '../sections/contact/WarningBanner';
 import WhatsAppForm from '../sections/contact/WhatsAppForm';
 import ContactDetails from '../sections/contact/ContactDetails';
-import Footer from '../components/Footer';
+import GoogleMapEmbed from '../sections/contact/GoogleMapEmbed';
 
 export default function ContactPage() {
   return (
@@ -17,7 +17,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-      <Footer />
+      <GoogleMapEmbed />
     </main>
   );
 }

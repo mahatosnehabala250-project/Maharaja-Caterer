@@ -17,10 +17,10 @@ export default function ExperienceSection() {
                 muted
                 loop
                 playsInline
-                poster="./images/staff_serving.jpg"
+                poster="/images/staff_serving.jpg"
                 className="w-full aspect-video object-cover"
               >
-                <source src="./videos/staff_video.mp4" type="video/mp4" />
+                <source src="/videos/staff_video.mp4" type="video/mp4" />
               </video>
             </div>
           </SectionReveal>

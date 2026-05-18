@@ -5,6 +5,9 @@ import RoyalMascots from './components/RoyalMascots';
 import LoadingScreen from './components/LoadingScreen';
 import BackToTop from './components/BackToTop';
 import WhatsAppFloat from './components/WhatsAppFloat';
+import SocialProofToast from './components/SocialProofToast';
+import Footer from './components/Footer';
+import PageTransition from './components/PageTransition';
 import HomePage from './pages/HomePage';
 import MenusPage from './pages/MenusPage';
 import GalleryPage from './pages/GalleryPage';
@@ -43,16 +46,19 @@ export default function App() {
       <RoyalMascots />
       <BackToTop />
       <WhatsAppFloat />
+      <SocialProofToast />
 
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/menus" element={<MenusPage />} />
-        <Route path="/gallery" element={<GalleryPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <PageTransition>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/menus" element={<MenusPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </PageTransition>
 
-      {/* Cookie Consent */}
+      <Footer />
       <CookieConsent />
     </>
   );

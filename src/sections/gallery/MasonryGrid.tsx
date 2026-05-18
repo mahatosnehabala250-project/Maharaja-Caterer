@@ -1,14 +1,14 @@
 import SectionReveal from '../../components/SectionReveal';
 
 const galleryItems = [
-  { image: './images/gallery_stage.jpg', category: 'Stage & Venue Decoration', location: 'Purulia' },
-  { image: './images/gallery_buffet.jpg', category: 'Live Buffet Setup', location: 'Purulia' },
-  { image: './images/gallery_planning.jpg', category: 'Full Event Planning', location: 'Purulia' },
-  { image: './images/gallery_thali.jpg', category: 'Wedding Feast Spread', location: 'Purulia' },
-  { image: './images/gallery_birthday.jpg', category: 'Birthday Celebration', location: 'Purulia' },
-  { image: './images/gallery_religious.jpg', category: 'Religious Function', location: 'Purulia' },
-  { image: './images/gallery_team.jpg', category: 'Team Serving', location: 'Purulia' },
-  { image: './images/gallery_family.jpg', category: 'Happy Clients', location: 'Purulia' },
+  { image: '/images/gallery_stage.jpg', category: 'Stage & Venue Decoration', location: 'Purulia' },
+  { image: '/images/gallery_buffet.jpg', category: 'Live Buffet Setup', location: 'Purulia' },
+  { image: '/images/gallery_planning.jpg', category: 'Full Event Planning', location: 'Purulia' },
+  { image: '/images/gallery_thali.jpg', category: 'Wedding Feast Spread', location: 'Purulia' },
+  { image: '/images/gallery_birthday.jpg', category: 'Birthday Celebration', location: 'Purulia' },
+  { image: '/images/gallery_religious.jpg', category: 'Religious Function', location: 'Purulia' },
+  { image: '/images/gallery_team.jpg', category: 'Team Serving', location: 'Purulia' },
+  { image: '/images/gallery_family.jpg', category: 'Happy Clients', location: 'Purulia' },
 ];
 
 interface MasonryGridProps {

@@ -31,7 +31,7 @@ export default function ProblemSection() {
         style={{ transform: 'rotate(-15deg)' }}
       >
         <img
-          src="./images/peacock_feather.png"
+          src="/images/peacock_feather.png"
           alt=""
           className="w-full h-full object-contain"
         />

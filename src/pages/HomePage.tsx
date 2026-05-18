@@ -6,20 +6,23 @@ import PricingSection from '../components/PricingSection';
 import TestimonialsSection from '../sections/home/TestimonialsSection';
 import StatsCounter from '../components/StatsCounter';
 import FAQSection from '../components/FAQSection';
-import Footer from '../components/Footer';
+import OrnamentalDivider from '../components/OrnamentalDivider';
 
 export default function HomePage() {
   return (
     <main>
       <HeroSection />
       <StatsCounter />
+      <OrnamentalDivider />
       <ProblemSection />
       <ExperienceSection />
+      <OrnamentalDivider />
       <ProcessSection />
       <PricingSection />
+      <OrnamentalDivider />
       <TestimonialsSection />
+      <OrnamentalDivider />
       <FAQSection />
-      <Footer />
     </main>
   );
 }

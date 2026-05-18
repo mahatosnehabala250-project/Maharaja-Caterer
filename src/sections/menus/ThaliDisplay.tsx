@@ -18,7 +18,7 @@ export default function ThaliDisplay() {
         <SectionReveal delay={0.2}>
           <div className="relative rounded-2xl overflow-hidden max-w-[900px] mx-auto border-2 border-gold shadow-gold">
             <img
-              src="./images/thali_arrangement.jpg"
+              src="/images/thali_arrangement.jpg"
               alt="The Purulia Wedding Thali - Complete Bengali Wedding Feast with Basanti Pulao, Shorshe Ilish, Kosha Mangsho, Chingri Malai Curry, and traditional sweets"
               className="w-full h-auto"
               loading="lazy"

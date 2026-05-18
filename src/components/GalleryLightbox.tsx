@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface GalleryLightboxProps {
@@ -14,7 +14,7 @@ export default function GalleryLightbox({ images, startIndex, onClose }: Gallery
   const next = () => setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
 
   // Keyboard navigation
-  useState(() => {
+  useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
       if (e.key === 'ArrowLeft') prev();
@@ -22,7 +22,7 @@ export default function GalleryLightbox({ images, startIndex, onClose }: Gallery
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  });
+  }, [onClose]);
 
   return (
     <div

@@ -21,7 +21,7 @@ export default function RoyalMascots() {
         >
           <div className="animate-breathe">
             <img
-              src="./images/mascot_left.png"
+              src="/images/mascot_left.png"
               alt="Royal Maharaja Mascot"
               className="w-24 lg:w-32 xl:w-40 h-auto drop-shadow-lg"
               style={{ transform: 'scaleX(-1)' }}
@@ -37,7 +37,7 @@ export default function RoyalMascots() {
         >
           <div className="animate-breathe">
             <img
-              src="./images/mascot_right.png"
+              src="/images/mascot_right.png"
               alt="Royal Maharaja Mascot"
               className="w-24 lg:w-32 xl:w-40 h-auto drop-shadow-lg"
             />
@@ -56,7 +56,7 @@ export default function RoyalMascots() {
         }`}
       >
         <img
-          src="./images/mascot_left.png"
+          src="/images/mascot_left.png"
           alt="Royal Maharaja Mascot"
           className="w-10 h-auto drop-shadow-md"
           style={{ transform: 'scaleX(-1)' }}
@@ -68,7 +68,7 @@ export default function RoyalMascots() {
         }`}
       >
         <img
-          src="./images/mascot_right.png"
+          src="/images/mascot_right.png"
           alt="Royal Maharaja Mascot"
           className="w-10 h-auto drop-shadow-md"
         />

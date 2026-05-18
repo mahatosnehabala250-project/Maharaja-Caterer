@@ -7,10 +7,10 @@ export default function MenuHeader() {
         muted
         loop
         playsInline
-        poster="./images/tandoor.jpg"
+        poster="/images/tandoor.jpg"
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="./videos/tandoor_video.mp4" type="video/mp4" />
+        <source src="/videos/tandoor_video.mp4" type="video/mp4" />
       </video>
 
       {/* Overlay */}
