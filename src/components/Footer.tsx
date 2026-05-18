@@ -20,7 +20,10 @@ const services = [
 
 export default function Footer() {
   return (
-    <footer className="bg-maroon text-cream">
+    <footer className="bg-maroon text-cream relative">
+      {/* Gold gradient top border */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold to-transparent" />
+
       <div className="section-container py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr] gap-10">
           {/* Brand Column */}
@@ -52,15 +55,16 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-poppins font-semibold text-gold text-sm uppercase tracking-wider mb-4">
+            <h4 className="font-poppins font-semibold text-gold text-sm uppercase tracking-wider mb-4 relative">
               Quick Links
+              <span className="absolute -bottom-2 left-0 w-8 h-[2px] bg-gold" />
             </h4>
             <ul className="space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.to}
-                    className="font-inter text-sm text-cream/80 hover:text-gold transition-colors"
+                    className="font-inter text-sm text-cream/80 hover:text-gold hover:pl-1 transition-all duration-300"
                   >
                     {link.label}
                   </Link>
@@ -71,13 +75,14 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-poppins font-semibold text-gold text-sm uppercase tracking-wider mb-4">
+            <h4 className="font-poppins font-semibold text-gold text-sm uppercase tracking-wider mb-4 relative">
               Services
+              <span className="absolute -bottom-2 left-0 w-8 h-[2px] bg-gold" />
             </h4>
             <ul className="space-y-2.5">
               {services.map((service) => (
                 <li key={service}>
-                  <span className="font-inter text-sm text-cream/80">
+                  <span className="font-inter text-sm text-cream/80 hover:text-gold hover:pl-1 inline-block transition-all duration-300">
                     {service}
                   </span>
                 </li>

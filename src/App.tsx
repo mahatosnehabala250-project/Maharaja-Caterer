@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage';
 import MenusPage from './pages/MenusPage';
 import GalleryPage from './pages/GalleryPage';
 import ContactPage from './pages/ContactPage';
+import NotFound from './pages/NotFound';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -48,6 +49,7 @@ export default function App() {
         <Route path="/menus" element={<MenusPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       {/* Cookie Consent */}
