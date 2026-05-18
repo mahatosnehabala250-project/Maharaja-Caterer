@@ -3,6 +3,8 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import RoyalMascots from './components/RoyalMascots';
 import LoadingScreen from './components/LoadingScreen';
+import BackToTop from './components/BackToTop';
+import WhatsAppFloat from './components/WhatsAppFloat';
 import HomePage from './pages/HomePage';
 import MenusPage from './pages/MenusPage';
 import GalleryPage from './pages/GalleryPage';
@@ -38,6 +40,8 @@ export default function App() {
       <ScrollToTop />
       <Navbar />
       <RoyalMascots />
+      <BackToTop />
+      <WhatsAppFloat />
 
       <Routes>
         <Route path="/" element={<HomePage />} />

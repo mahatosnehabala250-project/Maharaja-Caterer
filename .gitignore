@@ -8,3 +8,8 @@ Thumbs.db
 *.log
 extracted_project/
 upload/
+cron-health-check.sh
+cron-watchdog.cjs
+cron-health.log
+watchdog-out.log
+.github/workflows/

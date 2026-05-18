@@ -3,43 +3,43 @@ import SectionReveal from '../../components/SectionReveal';
 
 const testimonials = [
   {
-    text: 'Starters to desserts — top notch',
+    text: 'Starters to desserts — everything was top notch. Best caterer in Purulia for wedding feasts!',
     name: 'Somnath Dutta',
     rating: 5,
   },
   {
-    text: 'Dishes beautifully arranged, treat for eyes & taste buds. Highly recommended!',
+    text: 'Dishes were beautifully arranged — a treat for both eyes and taste buds. Highly recommended!',
     name: 'Debkumar Banerjee',
     rating: 5,
   },
   {
-    text: 'Fresh and flavorful food, wide variety',
+    text: 'Fresh, flavorful food with a wide variety. Guests could not stop praising the menu.',
     name: 'Sanjib Seth',
     rating: 5,
   },
   {
-    text: 'Very good food quality',
+    text: 'Very good food quality and the staff was well-trained and courteous. Will book again!',
     name: 'Rabijyoti Bera',
     rating: 5,
   },
   {
-    text: 'Starters to desserts — top notch',
-    name: 'Somnath Dutta',
+    text: 'Maharaja Caterer made our Biye Bari special. The Kosha Mangsho and Basanti Pulao were divine.',
+    name: 'Animesh Mahato',
     rating: 5,
   },
   {
-    text: 'Dishes beautifully arranged, treat for eyes & taste buds. Highly recommended!',
-    name: 'Debkumar Banerjee',
+    text: 'On-time service, clean setup, and the buffet arrangement was superb. Five stars!',
+    name: 'Priya Mukherjee',
     rating: 5,
   },
   {
-    text: 'Fresh and flavorful food, wide variety',
-    name: 'Sanjib Seth',
+    text: 'We booked them for my daughter birthday. Kids and adults both loved the food. Thank you!',
+    name: 'Rupak Dey',
     rating: 5,
   },
   {
-    text: 'Very good food quality',
-    name: 'Rabijyoti Bera',
+    text: 'The thali arrangement looked royal. Every dish was hot and fresh. Professional team.',
+    name: 'Sujata Karmakar',
     rating: 5,
   },
 ];

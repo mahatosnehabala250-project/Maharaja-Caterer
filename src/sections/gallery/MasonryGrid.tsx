@@ -11,14 +11,21 @@ const galleryItems = [
   { image: './images/gallery_family.jpg', category: 'Happy Clients', location: 'Purulia' },
 ];
 
-export default function MasonryGrid() {
+interface MasonryGridProps {
+  onImageClick?: (index: number) => void;
+}
+
+export default function MasonryGrid({ onImageClick }: MasonryGridProps) {
   return (
     <section className="pb-20 lg:pb-28 bg-cream">
       <div className="section-container">
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
           {galleryItems.map((item, index) => (
             <SectionReveal key={index} delay={0.1 * (index + 1)}>
-              <div className="relative group overflow-hidden rounded-2xl break-inside-avoid cursor-pointer">
+              <div
+                className="relative group overflow-hidden rounded-2xl break-inside-avoid cursor-pointer"
+                onClick={() => onImageClick?.(index)}
+              >
                 <img
                   src={item.image}
                   alt={`${item.category} - ${item.location}`}
@@ -38,6 +45,15 @@ export default function MasonryGrid() {
 
                 {/* Border on hover */}
                 <div className="absolute inset-0 border-2 border-gold rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+                {/* Zoom icon hint */}
+                <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-maroon/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <svg className="w-4 h-4 text-cream" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                    <path d="M11 8v6M8 11h6" />
+                  </svg>
+                </div>
               </div>
             </SectionReveal>
           ))}
