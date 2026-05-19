@@ -6,6 +6,7 @@ import LoadingScreen from './components/LoadingScreen';
 import BackToTop from './components/BackToTop';
 import WhatsAppFloat from './components/WhatsAppFloat';
 import SocialProofToast from './components/SocialProofToast';
+import ScrollProgress from './components/ScrollProgress';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import MenusPage from './pages/MenusPage';
@@ -41,6 +42,7 @@ export default function App() {
       {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
 
       <ScrollToTop />
+      <ScrollProgress />
       <Navbar />
       <RoyalMascots />
       <BackToTop />

@@ -1,4 +1,4 @@
-import { Home, Menu } from 'lucide-react';
+import { Home, Menu, Crown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function NotFound() {
@@ -17,7 +17,7 @@ export default function NotFound() {
 
         {/* Crown icon */}
         <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gold/10 flex items-center justify-center border-2 border-gold">
-          <span className="text-3xl">👑</span>
+          <Crown className="w-8 h-8 text-gold" />
         </div>
 
         {/* Message */}

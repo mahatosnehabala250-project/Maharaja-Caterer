@@ -2,6 +2,7 @@ import HeroSection from '../sections/home/HeroSection';
 import ProblemSection from '../sections/home/ProblemSection';
 import ExperienceSection from '../sections/home/ExperienceSection';
 import ProcessSection from '../sections/home/ProcessSection';
+import SuccessVisionSection from '../sections/home/SuccessVisionSection';
 import PricingSection from '../components/PricingSection';
 import TestimonialsSection from '../sections/home/TestimonialsSection';
 import StatsCounter from '../components/StatsCounter';
@@ -18,6 +19,8 @@ export default function HomePage() {
       <ExperienceSection />
       <OrnamentalDivider />
       <ProcessSection />
+      <OrnamentalDivider />
+      <SuccessVisionSection />
       <PricingSection />
       <OrnamentalDivider />
       <TestimonialsSection />

@@ -39,7 +39,7 @@ const testimonials = [
     rating: 5,
   },
   {
-    text: 'We booked them for my daughter birthday. Kids and adults both loved the food. Thank you!',
+    text: "We booked them for my daughter's birthday. Kids and adults both loved the food. Thank you!",
     name: 'Rupak Dey',
     event: 'Birthday',
     rating: 5,
