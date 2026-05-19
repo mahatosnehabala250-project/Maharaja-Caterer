@@ -1,9 +1,19 @@
+import { useState, useRef } from 'react';
 import { Star, Facebook } from 'lucide-react';
 import SectionReveal from '../../components/SectionReveal';
 import { useCounter } from '../../hooks/useCounter';
 
 export default function ExperienceSection() {
   const { count, ref: counterRef } = useCounter(500, 2000);
+  const [videoReady, setVideoReady] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleVideoCanPlay = () => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+    setVideoReady(true);
+  };
 
   return (
     <section className="py-20 lg:py-28 bg-cream">
@@ -11,14 +21,27 @@ export default function ExperienceSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left: Video */}
           <SectionReveal>
-            <div className="relative rounded-2xl overflow-hidden border-2 border-gold shadow-video">
+            <div className="relative rounded-2xl overflow-hidden border-2 border-gold shadow-video bg-maroon">
+              {/* Poster/placeholder background — no white flash */}
+              <div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-700"
+                style={{
+                  backgroundImage: 'url(/images/staff_serving.jpg)',
+                  opacity: videoReady ? 0 : 1,
+                }}
+              />
               <video
+                ref={videoRef}
                 autoPlay
                 muted
                 loop
                 playsInline
+                preload="auto"
                 poster="/images/staff_serving.jpg"
-                className="w-full aspect-video object-cover"
+                onCanPlayThrough={handleVideoCanPlay}
+                className={`w-full aspect-video object-cover transition-opacity duration-700 ${
+                  videoReady ? 'opacity-100' : 'opacity-0'
+                }`}
               >
                 <source src="/videos/staff_video.mp4" type="video/mp4" />
               </video>

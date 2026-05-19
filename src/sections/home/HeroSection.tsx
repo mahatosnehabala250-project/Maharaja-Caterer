@@ -1,25 +1,48 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Crown, Shield, Phone } from 'lucide-react';
 
 export default function HeroSection() {
   const [loaded, setLoaded] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoaded(true), 200);
     return () => clearTimeout(timer);
   }, []);
 
+  const handleVideoCanPlay = () => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+    setVideoReady(true);
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-maroon">
+      {/* Poster/placeholder background — no white flash */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-700"
+        style={{
+          backgroundImage: 'url(/images/hero_poster.jpg)',
+          opacity: videoReady ? 0 : 1,
+        }}
+      />
+
       {/* Video Background */}
       <video
+        ref={videoRef}
         autoPlay
         muted
         loop
         playsInline
+        preload="auto"
         poster="/images/hero_poster.jpg"
-        className="absolute inset-0 w-full h-full object-cover"
+        onCanPlayThrough={handleVideoCanPlay}
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+          videoReady ? 'opacity-100' : 'opacity-0'
+        }`}
       >
         <source src="/videos/hero_video.mp4" type="video/mp4" />
       </video>
