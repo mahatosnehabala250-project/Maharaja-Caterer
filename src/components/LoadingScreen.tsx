@@ -6,15 +6,22 @@ interface LoadingScreenProps {
 }
 
 export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
-  const [fadeOut, setFadeOut] = useState(false);
+  const [phase, setPhase] = useState<'idle' | 'fading' | 'done'>('idle');
   const doneRef = useRef(false);
 
   useEffect(() => {
     const dismiss = () => {
       if (doneRef.current) return;
       doneRef.current = true;
-      setFadeOut(true);
-      setTimeout(onComplete, 800); // longer fade for smoother transition
+
+      // Phase 1: Start fading out the loading screen
+      setPhase('fading');
+
+      // Phase 2: After overlay fades, mark complete
+      setTimeout(() => {
+        setPhase('done');
+        onComplete();
+      }, 1000);
     };
 
     // Create hidden video, make it actually PLAY
@@ -56,17 +63,20 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
     };
   }, [onComplete]);
 
+  if (phase === 'done') return null;
+
   return (
     <div
       className={`fixed inset-0 z-[10000] bg-maroon flex flex-col items-center justify-center ${
-        fadeOut
-          ? 'opacity-0 pointer-events-none'
-          : 'opacity-100'
+        phase === 'fading'
+          ? 'pointer-events-none'
+          : ''
       }`}
       style={{
-        transition: fadeOut
-          ? 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
-          : 'none',
+        opacity: phase === 'fading' ? 0 : 1,
+        transform: phase === 'fading' ? 'scale(1.05)' : 'scale(1)',
+        transition:
+          'opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1)',
       }}
     >
       <Crown className="w-14 h-14 text-gold animate-spin-slow mb-6" />

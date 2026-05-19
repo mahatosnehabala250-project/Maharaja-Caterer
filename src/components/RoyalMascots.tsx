@@ -15,64 +15,90 @@ export default function RoyalMascots() {
       <>
         {/* Left Mascot */}
         <div
-          className={`fixed left-0 top-20 z-[100] pointer-events-none transition-all duration-[1200ms] ease-out ${
-            loaded ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'
-          }`}
+          className="fixed top-20 z-[100] pointer-events-none transition-all duration-[1200ms] ease-out"
+          style={{ left: 0 }}
         >
-          <div className="animate-breathe">
-            <img
-              src="/images/mascot_left.png"
-              alt=""
-              className="w-24 lg:w-32 xl:w-40 h-auto drop-shadow-lg"
-              style={{ transform: 'scaleX(-1)' }}
-            />
+          <div
+            className={`transition-all duration-[1200ms] ease-out ${
+              loaded ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'
+            }`}
+          >
+            <div className="animate-breathe">
+              <img
+                src="/images/mascot_left.png"
+                alt=""
+                className="w-24 lg:w-32 xl:w-40 h-auto drop-shadow-lg"
+                style={{ transform: 'scaleX(-1)' }}
+              />
+            </div>
           </div>
         </div>
 
         {/* Right Mascot */}
         <div
-          className={`fixed right-0 top-20 z-[100] pointer-events-none transition-all duration-[1200ms] ease-out ${
-            loaded ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
-          }`}
+          className="fixed top-20 z-[100] pointer-events-none transition-all duration-[1200ms] ease-out"
+          style={{ right: 0 }}
         >
-          <div className="animate-breathe">
-            <img
-              src="/images/mascot_right.png"
-              alt=""
-              className="w-24 lg:w-32 xl:w-40 h-auto drop-shadow-lg"
-            />
+          <div
+            className={`transition-all duration-[1200ms] ease-out ${
+              loaded ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+            }`}
+          >
+            <div className="animate-breathe">
+              <img
+                src="/images/mascot_right.png"
+                alt=""
+                className="w-24 lg:w-32 xl:w-40 h-auto drop-shadow-lg"
+              />
+            </div>
           </div>
         </div>
       </>
     );
   }
 
-  // Mobile: both mascots at SAME height — bottom corners
+  // Mobile: single fixed wrapper with both mascots at opposite bottom corners
   return (
-    <>
+    <div
+      className="fixed inset-x-0 bottom-0 z-[997] pointer-events-none"
+      style={{ height: '60px' }}
+    >
+      {/* Left Mascot — bottom-left corner */}
       <div
-        className={`fixed bottom-3 left-3 z-[997] pointer-events-none transition-all duration-[1200ms] ease-out ${
-          loaded ? 'translate-y-0 opacity-80' : 'translate-y-full opacity-0'
-        }`}
+        className="absolute bottom-3 transition-all duration-[1200ms] ease-out"
+        style={{ left: '12px' }}
       >
-        <img
-          src="/images/mascot_left.png"
-          alt=""
-          className="w-8 h-auto drop-shadow-md"
-          style={{ transform: 'scaleX(-1)' }}
-        />
+        <div
+          className={`transition-all duration-[1200ms] ease-out ${
+            loaded ? 'translate-y-0 opacity-60' : 'translate-y-full opacity-0'
+          }`}
+        >
+          <img
+            src="/images/mascot_left.png"
+            alt=""
+            className="w-7 h-auto drop-shadow-md"
+            style={{ transform: 'scaleX(-1)' }}
+          />
+        </div>
       </div>
+
+      {/* Right Mascot — bottom-right corner */}
       <div
-        className={`fixed bottom-3 right-3 z-[997] pointer-events-none transition-all duration-[1200ms] ease-out ${
-          loaded ? 'translate-y-0 opacity-80' : 'translate-y-full opacity-0'
-        }`}
+        className="absolute bottom-3 transition-all duration-[1200ms] ease-out"
+        style={{ right: '12px' }}
       >
-        <img
-          src="/images/mascot_right.png"
-          alt=""
-          className="w-8 h-auto drop-shadow-md"
-        />
+        <div
+          className={`transition-all duration-[1200ms] ease-out ${
+            loaded ? 'translate-y-0 opacity-60' : 'translate-y-full opacity-0'
+          }`}
+        >
+          <img
+            src="/images/mascot_right.png"
+            alt=""
+            className="w-7 h-auto drop-shadow-md"
+          />
+        </div>
       </div>
-    </>
+    </div>
   );
 }
