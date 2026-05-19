@@ -22,7 +22,7 @@ export default function RoyalMascots() {
           <div className="animate-breathe">
             <img
               src="/images/mascot_left.png"
-              alt="Royal Maharaja Mascot"
+              alt=""
               className="w-24 lg:w-32 xl:w-40 h-auto drop-shadow-lg"
               style={{ transform: 'scaleX(-1)' }}
             />
@@ -38,7 +38,7 @@ export default function RoyalMascots() {
           <div className="animate-breathe">
             <img
               src="/images/mascot_right.png"
-              alt="Royal Maharaja Mascot"
+              alt=""
               className="w-24 lg:w-32 xl:w-40 h-auto drop-shadow-lg"
             />
           </div>
@@ -47,30 +47,30 @@ export default function RoyalMascots() {
     );
   }
 
-  // Mobile: floating bottom corners
+  // Mobile: floating bottom corners — z-index BELOW WhatsApp (997 < 998) and BackToTop
   return (
     <>
       <div
-        className={`fixed bottom-4 left-4 z-[100] pointer-events-none transition-all duration-[1200ms] ease-out ${
-          loaded ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
+        className={`fixed bottom-3 left-3 z-[997] pointer-events-none transition-all duration-[1200ms] ease-out ${
+          loaded ? 'translate-y-0 opacity-80' : 'translate-y-full opacity-0'
         }`}
       >
         <img
           src="/images/mascot_left.png"
-          alt="Royal Maharaja Mascot"
-          className="w-10 h-auto drop-shadow-md"
+          alt=""
+          className="w-8 h-auto drop-shadow-md"
           style={{ transform: 'scaleX(-1)' }}
         />
       </div>
       <div
-        className={`fixed bottom-4 right-4 z-[100] pointer-events-none transition-all duration-[1200ms] ease-out ${
-          loaded ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
+        className={`fixed bottom-20 right-3 z-[997] pointer-events-none transition-all duration-[1200ms] ease-out ${
+          loaded ? 'translate-y-0 opacity-80' : 'translate-y-full opacity-0'
         }`}
       >
         <img
           src="/images/mascot_right.png"
-          alt="Royal Maharaja Mascot"
-          className="w-10 h-auto drop-shadow-md"
+          alt=""
+          className="w-8 h-auto drop-shadow-md"
         />
       </div>
     </>
