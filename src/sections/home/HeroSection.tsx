@@ -4,33 +4,23 @@ import { Crown, Shield, Phone } from 'lucide-react';
 
 export default function HeroSection() {
   const [loaded, setLoaded] = useState(false);
-  const [videoReady, setVideoReady] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoaded(true), 200);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleVideoCanPlay = () => {
+    // Immediately try to play — video should already be cached from LoadingScreen
     if (videoRef.current) {
       videoRef.current.play().catch(() => {});
     }
-    setVideoReady(true);
-  };
+    const timer = setTimeout(() => setLoaded(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-maroon">
-      {/* Poster/placeholder background — no white flash */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-700"
-        style={{
-          backgroundImage: 'url(/images/hero_poster.jpg)',
-          opacity: videoReady ? 0 : 1,
-        }}
-      />
+      {/* Poster background — visible instantly, no white flash */}
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/images/hero_poster.jpg)' }} />
 
-      {/* Video Background */}
+      {/* Video Background — plays on top of poster once ready */}
       <video
         ref={videoRef}
         autoPlay
@@ -39,10 +29,7 @@ export default function HeroSection() {
         playsInline
         preload="auto"
         poster="/images/hero_poster.jpg"
-        onCanPlayThrough={handleVideoCanPlay}
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
-          videoReady ? 'opacity-100' : 'opacity-0'
-        }`}
+        className="absolute inset-0 w-full h-full object-cover"
       >
         <source src="/videos/hero_video.mp4" type="video/mp4" />
       </video>
