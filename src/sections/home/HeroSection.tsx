@@ -4,23 +4,32 @@ import { Crown, Shield, Phone } from 'lucide-react';
 
 export default function HeroSection() {
   const [loaded, setLoaded] = useState(false);
+  const [videoVisible, setVideoVisible] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    // Immediately try to play — video should already be cached from LoadingScreen
+    // Video should already be cached from LoadingScreen
     if (videoRef.current) {
-      videoRef.current.play().catch(() => {});
+      const v = videoRef.current;
+      const onPlay = () => setVideoVisible(true);
+      v.addEventListener('playing', onPlay);
+      v.play().catch(() => {});
+      return () => v.removeEventListener('playing', onPlay);
     }
-    const timer = setTimeout(() => setLoaded(true), 100);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoaded(true);
+      // Fallback: if video still not visible after 2s, show it anyway
+      setTimeout(() => setVideoVisible(true), 2000);
+    }, 100);
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-maroon">
-      {/* Poster background — visible instantly, no white flash */}
-      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/images/hero_poster.jpg)' }} />
-
-      {/* Video Background — plays on top of poster once ready */}
+      {/* Video Background — hidden until actually playing, no poster image */}
       <video
         ref={videoRef}
         autoPlay
@@ -28,8 +37,9 @@ export default function HeroSection() {
         loop
         playsInline
         preload="auto"
-        poster="/images/hero_poster.jpg"
-        className="absolute inset-0 w-full h-full object-cover"
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+          videoVisible ? 'opacity-100' : 'opacity-0'
+        }`}
       >
         <source src="/videos/hero_video.mp4" type="video/mp4" />
       </video>
