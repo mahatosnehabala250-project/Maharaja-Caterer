@@ -14,14 +14,8 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
       if (doneRef.current) return;
       doneRef.current = true;
       setFadeOut(true);
-      setTimeout(onComplete, 500);
+      setTimeout(onComplete, 800); // longer fade for smoother transition
     };
-
-    // Minimum 1.5s spinner for brand feel
-    const minTimer = setTimeout(() => {
-      // After min time, check if video already playing
-      // If not, keep showing until video plays or max time
-    }, 1500);
 
     // Create hidden video, make it actually PLAY
     const video = document.createElement('video');
@@ -30,16 +24,12 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
     video.preload = 'auto';
     video.src = '/videos/hero_video.mp4';
 
-    // Key: listen for 'playing' event — fires when video ACTUALLY starts playing
-    // Not 'canplaythrough' which waits for full buffer (causes hang)
     const handlePlaying = () => {
-      // Ensure minimum 1.5s has passed
       const elapsed = Date.now() - startTime;
       const remaining = Math.max(0, 1500 - elapsed);
       setTimeout(dismiss, remaining);
     };
 
-    // If video fails to play at all
     const handleError = () => {
       const elapsed = Date.now() - startTime;
       const remaining = Math.max(0, 2000 - elapsed);
@@ -54,12 +44,10 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
 
     const startTime = Date.now();
 
-    // Start loading and playing immediately
     video.load();
     video.play().catch(() => {});
 
     return () => {
-      clearTimeout(minTimer);
       clearTimeout(maxTimer);
       video.removeEventListener('playing', handlePlaying);
       video.removeEventListener('error', handleError);
@@ -70,9 +58,16 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
 
   return (
     <div
-      className={`fixed inset-0 z-[10000] bg-maroon flex flex-col items-center justify-center transition-opacity duration-500 ${
-        fadeOut ? 'opacity-0 pointer-events-none' : 'opacity-100'
+      className={`fixed inset-0 z-[10000] bg-maroon flex flex-col items-center justify-center ${
+        fadeOut
+          ? 'opacity-0 pointer-events-none'
+          : 'opacity-100'
       }`}
+      style={{
+        transition: fadeOut
+          ? 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
+          : 'none',
+      }}
     >
       <Crown className="w-14 h-14 text-gold animate-spin-slow mb-6" />
       <p className="font-playfair text-cream text-xl text-center px-4">

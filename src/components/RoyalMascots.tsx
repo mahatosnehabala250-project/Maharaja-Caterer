@@ -47,7 +47,7 @@ export default function RoyalMascots() {
     );
   }
 
-  // Mobile: floating bottom corners — z-index BELOW WhatsApp (997 < 998) and BackToTop
+  // Mobile: both mascots at SAME height — bottom corners
   return (
     <>
       <div
@@ -63,7 +63,7 @@ export default function RoyalMascots() {
         />
       </div>
       <div
-        className={`fixed bottom-20 right-3 z-[997] pointer-events-none transition-all duration-[1200ms] ease-out ${
+        className={`fixed bottom-3 right-3 z-[997] pointer-events-none transition-all duration-[1200ms] ease-out ${
           loaded ? 'translate-y-0 opacity-80' : 'translate-y-full opacity-0'
         }`}
       >
